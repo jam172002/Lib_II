@@ -4,12 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import com.example.lib_ii.databinding.ActivityUpdateBinding;
 
 public class Update extends AppCompatActivity {
 
     ActivityUpdateBinding bind;
+    String id,name, author, pNumber ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +20,18 @@ public class Update extends AppCompatActivity {
         setContentView(bind.getRoot());
 
         gettingData();
+
+
+        bind.btnUpdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DBHelper db = new DBHelper(Update.this);
+                db.update(id, name, author, pNumber);
+
+                startActivity(new Intent(Update.this, Display.class));
+
+            }
+        });
 
     }
 
@@ -28,9 +42,11 @@ public class Update extends AppCompatActivity {
                 intent.hasExtra("author") &&
                 intent.hasExtra("pNumber")) {
 
-            String name = intent.getStringExtra("name");
-            String author = intent.getStringExtra("author");
-            String pNumber = intent.getStringExtra("pNumber");
+            id = intent.getStringExtra("id");
+            name = intent.getStringExtra("name");
+            author = intent.getStringExtra("author");
+            pNumber = intent.getStringExtra("pNumber");
+
 
             bind.updName.setText(name);
             bind.updAuthor.setText(author);

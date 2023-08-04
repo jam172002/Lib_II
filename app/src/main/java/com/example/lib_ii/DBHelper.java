@@ -90,6 +90,24 @@ public class DBHelper extends SQLiteOpenHelper {
 
         return arrData;
     }
+
+    public void update(String id, String name, String author, String pNumber){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues val = new ContentValues();
+
+        val.put(COL_ID, id);
+        val.put(COL_NAME, name);
+        val.put(COL_AUTHOR, author);
+        val.put(COL_PAGES, pNumber);
+
+        long result = db.update(TABLE_NAME, val, " _id=?", new String[]{id});
+        
+        if (result == -1){
+            Toast.makeText(context, "Data Update Failed", Toast.LENGTH_SHORT).show();
+        }else {
+            Toast.makeText(context, "Update Successfully", Toast.LENGTH_SHORT).show();
+        }
+    }
 }
 
 

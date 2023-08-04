@@ -46,6 +46,7 @@ public class bookAdapter extends RecyclerView.Adapter<bookAdapter.ViewHolder> {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, Update.class);
+                intent.putExtra("id", String.valueOf(arrL.get(position).m_id));
                 intent.putExtra("name", String.valueOf(arrL.get(position).m_name));
                 intent.putExtra("author", String.valueOf(arrL.get(position).m_author));
                 intent.putExtra("pNumber", String.valueOf(arrL.get(position).m_page));
