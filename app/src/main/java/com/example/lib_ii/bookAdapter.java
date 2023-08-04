@@ -7,6 +7,7 @@ import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -41,7 +42,7 @@ public class bookAdapter extends RecyclerView.Adapter<bookAdapter.ViewHolder> {
         holder.pNumber.setText(arrL.get(position).m_page);
 
         //this click listener will enable the item shown on recycler view click able
-        holder.updateLayout.setOnClickListener(new View.OnClickListener() {
+        holder.mainLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, Update.class);
@@ -62,14 +63,14 @@ public class bookAdapter extends RecyclerView.Adapter<bookAdapter.ViewHolder> {
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView id, name, author, pNumber;
-        ConstraintLayout updateLayout;
+        ConstraintLayout mainLayout;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             id = itemView.findViewById(R.id.tvID);
             name = itemView.findViewById(R.id.tvName);
             author = itemView.findViewById(R.id.tvAuthor);
             pNumber = itemView.findViewById(R.id.tvPages);
-            updateLayout = itemView.findViewById(R.id.updateLayout);
+            mainLayout = itemView.findViewById(R.id.mainLayout);
 
         }
     }
