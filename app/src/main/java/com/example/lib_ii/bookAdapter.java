@@ -1,13 +1,17 @@
 package com.example.lib_ii;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -31,11 +35,24 @@ public class bookAdapter extends RecyclerView.Adapter<bookAdapter.ViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         holder.id.setText(String.valueOf(arrL.get(position).m_id));
         holder.name.setText(arrL.get(position).m_name);
         holder.author.setText(arrL.get(position).m_author);
         holder.pNumber.setText(arrL.get(position).m_page);
+
+        //this click listener will enable the item shown on recycler view click able
+        holder.mainLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, Update.class);
+                intent.putExtra("id", String.valueOf(arrL.get(position).m_id));
+                intent.putExtra("name", String.valueOf(arrL.get(position).m_name));
+                intent.putExtra("author", String.valueOf(arrL.get(position).m_author));
+                intent.putExtra("pNumber", String.valueOf(arrL.get(position).m_page));
+                context.startActivity(intent);
+            }
+        });
 
 
     }
@@ -47,12 +64,14 @@ public class bookAdapter extends RecyclerView.Adapter<bookAdapter.ViewHolder> {
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView id, name, author, pNumber;
+        ConstraintLayout mainLayout;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             id = itemView.findViewById(R.id.tvID);
             name = itemView.findViewById(R.id.tvName);
             author = itemView.findViewById(R.id.tvAuthor);
             pNumber = itemView.findViewById(R.id.tvPages);
+            mainLayout = itemView.findViewById(R.id.mainLayout);
 
         }
     }
