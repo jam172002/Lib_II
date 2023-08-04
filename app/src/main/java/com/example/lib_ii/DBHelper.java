@@ -24,7 +24,7 @@ public class DBHelper extends SQLiteOpenHelper {
     private static final String COL_PAGES = "NAME_OF_PAGES";
 
 
-    public DBHelper(Context context) {
+    DBHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
         this.context = context;
     }
@@ -95,12 +95,12 @@ public class DBHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues val = new ContentValues();
 
-        val.put(COL_ID, id);
+
         val.put(COL_NAME, name);
         val.put(COL_AUTHOR, author);
         val.put(COL_PAGES, pNumber);
 
-        long result = db.update(TABLE_NAME, val, " _id=?", new String[]{id});
+        long result = db.update(TABLE_NAME, val,  COL_ID + "=?", new String[]{id});
         
         if (result == -1){
             Toast.makeText(context, "Data Update Failed", Toast.LENGTH_SHORT).show();

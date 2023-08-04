@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import com.example.lib_ii.databinding.ActivityUpdateBinding;
@@ -26,12 +27,19 @@ public class Update extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 DBHelper db = new DBHelper(Update.this);
+
+                // Log the values before updating
+                Log.d("UpdateActivity", "id: " + id + ", name: " + name + ", author: " + author + ", pNumber: " + pNumber);
+
                 db.update(id, name, author, pNumber);
 
-                startActivity(new Intent(Update.this, Display.class));
+                // Log a message after the update method is called
+                Log.d("UpdateActivity", "Update method called.");
 
+                startActivity(new Intent(Update.this, Display.class));
             }
         });
+
 
     }
 
