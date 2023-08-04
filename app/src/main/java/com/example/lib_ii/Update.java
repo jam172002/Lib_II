@@ -20,18 +20,7 @@ public class Update extends AppCompatActivity {
         bind = ActivityUpdateBinding.inflate(getLayoutInflater());
         setContentView(bind.getRoot());
 
-        Intent intent = getIntent();
-        id = intent.getStringExtra("id");
-        name = intent.getStringExtra("name");
-        author = intent.getStringExtra("author");
-        pNumber = intent.getStringExtra("pNumber");
-
-
-        bind.updName.setText(name);
-        bind.updAuthor.setText(author);
-        bind.updPNumber.setText(pNumber);
-
-
+        gettingData();
         bind.btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -55,7 +44,7 @@ public class Update extends AppCompatActivity {
 
     }
 
-   /* public void gettingData() {
+    public void gettingData() {
         Intent intent = getIntent();
         if (intent != null &&
                 intent.hasExtra("name") &&
@@ -72,5 +61,5 @@ public class Update extends AppCompatActivity {
             bind.updAuthor.setText(author);
             bind.updPNumber.setText(pNumber);
         }
-    }*/
+    }
 }
