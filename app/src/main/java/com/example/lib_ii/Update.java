@@ -22,10 +22,12 @@ public class Update extends AppCompatActivity {
 
         gettingData();
 
-
         bind.btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                gettingData();
+
                 DBHelper db = new DBHelper(Update.this);
 
                 // Log the values before updating
@@ -43,7 +45,7 @@ public class Update extends AppCompatActivity {
 
     }
 
-    public void gettingData() {
+   void gettingData() {
         Intent intent = getIntent();
         if (intent != null &&
                 intent.hasExtra("name") &&
