@@ -62,5 +62,10 @@ public class bookAdapter extends RecyclerView.Adapter<bookAdapter.ViewHolder> {
         notifyDataSetChanged();
     }
 
+    public void Data(ArrayList<Model> newData) {
+        arrL.clear();
+        arrL.addAll(newData);
+        notifyDataSetChanged();
+    }
 
 }
