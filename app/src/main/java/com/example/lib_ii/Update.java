@@ -20,7 +20,16 @@ public class Update extends AppCompatActivity {
         bind = ActivityUpdateBinding.inflate(getLayoutInflater());
         setContentView(bind.getRoot());
 
-        gettingData();
+        Intent intent = getIntent();
+        id = intent.getStringExtra("id");
+        name = intent.getStringExtra("name");
+        author = intent.getStringExtra("author");
+        pNumber = intent.getStringExtra("pNumber");
+
+
+        bind.updName.setText(name);
+        bind.updAuthor.setText(author);
+        bind.updPNumber.setText(pNumber);
 
 
         bind.btnUpdate.setOnClickListener(new View.OnClickListener() {
@@ -31,6 +40,9 @@ public class Update extends AppCompatActivity {
                 // Log the values before updating
                 Log.d("UpdateActivity", "id: " + id + ", name: " + name + ", author: " + author + ", pNumber: " + pNumber);
 
+                String name = bind.updName.getText().toString();
+               String author = bind.updAuthor.getText().toString();
+               String pNumber = bind.updPNumber.getText().toString();
                 db.update(id, name, author, pNumber);
 
                 // Log a message after the update method is called
@@ -43,7 +55,7 @@ public class Update extends AppCompatActivity {
 
     }
 
-    public void gettingData() {
+   /* public void gettingData() {
         Intent intent = getIntent();
         if (intent != null &&
                 intent.hasExtra("name") &&
@@ -60,5 +72,5 @@ public class Update extends AppCompatActivity {
             bind.updAuthor.setText(author);
             bind.updPNumber.setText(pNumber);
         }
-    }
+    }*/
 }
