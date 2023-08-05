@@ -108,6 +108,18 @@ public class DBHelper extends SQLiteOpenHelper {
             Toast.makeText(context, "Update Successfully", Toast.LENGTH_SHORT).show();
         }
     }
+
+    //this data will delete only on row which have given id
+    public void delRow(String id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        long result = db.delete(TABLE_NAME, COL_ID + "=?", new String[]{id});
+        if(result == -1){
+            Toast.makeText(context, "Failed to delete", Toast.LENGTH_SHORT).show();
+        }else{
+            Toast.makeText(context, "Deleted Successfully", Toast.LENGTH_SHORT).show();
+        }
+        db.close();
+    }
 }
 
 
