@@ -51,7 +51,7 @@ public class Update extends AppCompatActivity {
             }
         });
 
-        bind.btnDelete.setOnClickListener(new View.OnClickListener() {
+       /* bind.btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 AlertDialog.Builder ad = new AlertDialog.Builder(Update.this);
@@ -76,7 +76,7 @@ public class Update extends AppCompatActivity {
             }
 
 
-        });
+        });*/
 
     }
 
